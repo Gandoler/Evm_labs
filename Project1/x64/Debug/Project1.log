@@ -1,0 +1,7 @@
+﻿  Lab_2.cpp
+C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\Project1\Lab_2.cpp(93,26): warning C4838: Преобразование из "unsigned int" в "int" требует сужающего преобразования.
+C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\Project1\Lab_2.cpp(106,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\Project1\Lab_2.cpp(148,19): warning C4305: инициализация: усечение из "unsigned int" в "uint16_t"
+C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\Project1\Lab_2.cpp(148,21): warning C4309: инициализация: усечение константного значения
+C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\Project1\Lab_2.cpp(181,34): warning C4305: инициализация: усечение из "unsigned int" в "float"
+  Project1.vcxproj -> C:\Users\glkru\Desktop\studi_huiadi\evm\Project1\x64\Debug\Project1.exe
