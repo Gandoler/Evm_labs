@@ -4,10 +4,11 @@ format_int32: .string "32-bit integer: %d\n"
 format_int64: .string "64-bit integer: %lld\n"
 format_float32: .string "32-bit float: %f\n"
 format_float64: .string "64-bit float: %f\n"
-myFlotik:  .float 3.14
-myDoublik: .float 3.14159265359
+
 
 .text
+myFlotik:  .float 3.14
+myDoublik: .float 3.14159265359
 .globl main
 main: 
     sub     $40, %rsp
