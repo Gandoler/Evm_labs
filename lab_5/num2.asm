@@ -42,18 +42,17 @@ main:
     xor     %eax, %eax
     call    printf
     
+    
     cvtss2sd    22(%rsp), %xmm0
- 
     lea     format_float32(%rip), %rdi 
-    xor     $1, %eax
+    mov     $1,%al 
     call    printf
-    xor     %eax, %eax
+   
     
    
     cvtss2sd    32(%rsp), %xmm0
-
     lea     format_float64(%rip), %rdi 
-    xor     $1, %eax
+    mov     $1,%al 
     call    printf
     
     
