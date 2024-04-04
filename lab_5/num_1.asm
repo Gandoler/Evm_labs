@@ -7,3 +7,5 @@ call puts
  add $8, %rsp
 xor %eax, %eax 
 ret
+
+
