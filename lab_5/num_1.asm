@@ -1,5 +1,5 @@
 .data
-msg: .string "Группа N1\n@ролов Глеб\пТрохин Евгений\n"
+msg: .string "group N1\FRolov Gleb\пTrochin Evgeniy\n"
 .text
 .globl main
 main: 
