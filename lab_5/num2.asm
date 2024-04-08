@@ -19,40 +19,36 @@ main:
    
     movss   myFlotik(%rip), %xmm0
     movss   %xmm0, 22(%rsp)
-    
-    
-    
     movss   myDoublik(%rip), %xmm1
     movss   %xmm1, 32(%rsp)
     
-    mov     2(%rsp), %eax
-    mov     %eax, %esi
-    lea     format_int16(%rip), %rdi  
-    xor     %eax, %eax
+    
+    lea     format_int16(%rip), %rdi
+    mov     2(%rsp), %rsi
+    xor     %al, %al
     call    printf
     
-    mov     6(%rsp), %eax
-    mov     %eax, %esi
+    
     lea     format_int32(%rip), %rdi  
-    xor     %eax, %eax
-    call    printf
-    
-    mov     14(%rsp), %rax
-    mov     %rax, %rsi
-    lea     format_int64(%rip), %rdi  
-    xor     %eax, %eax
+    mov     6(%rsp), %rsi
+    xor     %al, %al
     call    printf
     
     
-    cvtss2sd    22(%rsp), %xmm0
+    lea     format_int64(%rip), %rdi 
+    mov     14(%rsp), %rsi
+    xor     %al, %al
+    call    printf
+    
+    
     lea     format_float32(%rip), %rdi 
+    cvtss2sd    22(%rsp), %xmm0
     mov     $1,%al 
     call    printf
    
     
-   
-    cvtss2sd    32(%rsp), %xmm0
     lea     format_float64(%rip), %rdi 
+    cvtss2sd    32(%rsp), %xmm0
     mov     $1,%al 
     call    printf
     
@@ -60,6 +56,5 @@ main:
     add     $40, %rsp
     xor     %eax, %eax
     ret
-
 
 
