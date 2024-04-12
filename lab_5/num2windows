@@ -46,17 +46,22 @@ main:
     sub     $110, %rsp
     
     
-    movss   myFlotik(%rip), %xmm0
-    movss   %xmm0, (%rsp)
-    movss   myDoublik(%rip), %xmm1
-    movss   %xmm1, 40(%rsp)
+    movsd   myFlotik(%rip), %xmm0
+    cvtss2d %xmm0,%xmm0
+    movsd   %xmm0, (%rsp)
+    
+    movsd   myDoublik(%rip), %xmm1
+    movsd   %xmm1, 40(%rsp)
+   
     
     
     lea     format_float32(%rip), %rcx 
     xor     %rdx,%rdx
-    movss   (%rsp), %xmm1
-    movss   (%rsp), %rdx
+    movl     (%rsp), %edx
     
+    
+    shl $32, %rdx    
+      
     call    printf
    
     
