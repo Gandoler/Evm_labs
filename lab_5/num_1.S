@@ -6,6 +6,6 @@ main:
 sub $8, %rsp 
 lea msg(%rip), %rdi 
 call puts
- add $8, %rsp
+add $8, %rsp
 xor %eax, %eax 
 ret
