@@ -1,23 +1,25 @@
 .data
-S0:    .string "Enter the value of x: \n"
-S1:    .string "%lf"
+S0:     .string "Enter the value of x: \n"
+S1:     .string "%lf"
 S12:    .string "%lf"
-S2:    .string "Enter the value of y: \n"
-S3:    .string "Value of z: %lf\n"
-
+S2:     .string "Enter the value of y: \n"
+S3:     .string "Value of z: %lf\n"
+my_num_1:       .double 2
+my_num_2:       .double 2
+my_result:      .double 0 
 .text
 .globl main
-main: 
-    sub    $32, %rsp  
+main:
+    movq %rsp, %rbp #for correct debugging 
+    sub    $40, %rsp  
     
-
-    lea    S0(%rip), %rcx          
-    call   printf            ;32
-   
-      
-   
-    lea    S1(%rip), %rcx   
-    lea    32(%rsp), %rdx
+    
+    lea    S0(%rip), %rcx           
+    call   printf            
+     
+    
+    lea    S1(%rip), %rcx
+    lea    my_num_1(%rip), %rdx
     call    scanf            
    
     
@@ -26,20 +28,22 @@ main:
     
     
     lea    S12(%rip), %rcx
-    lea    16(%rsp), %rdx
+    lea    my_num_2(%rip), %rdx
     call   scanf   
     
     
-  ;  movsd   8(%rsp), %xmm0
-;    movsd   16(%rsp), %xmm1
-;    call    pow
-;    
+    movsd   my_num_1(%rip), %xmm0
+    movsd   my_num_2(%rip), %xmm1
+    call    pow
+    movsd   %xmm0, my_result(%rip) 
     
     
-    lea    S3(%rip), %rcx           
+    lea    S3(%rip), %rcx   
+    mov    my_result, %rdx
     call   printf            
     
     
     add    $40, %rsp         
     xor    %eax, %eax        
     ret 
+    
