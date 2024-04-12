@@ -1,26 +1,34 @@
 .data
-format_int16: .string "16-bit integer: %d\n"
-format_int32: .string "32-bit integer: %d\n"
-format_int64: .string "64-bit integer: %lld\n"
-format_float32: .string "32-bit float: %f\n"
-format_float64: .string "64-bit float: %f\n"
+format_int16:       .string "16-bit integer: %d\n"
+format_int32:       .string "32-bit integer: %d\n"
+format_int64:       .string "64-bit integer: %lld\n"
+format_float32:     .string "32-bit float: %f\n"
+format_float64:     .string "64-bit float: %f\n"
+myShortik:  .short 1235
+myLongik:   .long 134656
+myQuad:     .quad 1241246
+myFlotik:   .float 3.14
+myDoublik:  .double 3.14159265359
 
 
 .text
-myFlotik:  .float 3.14
-myDoublik: .float 3.14159265359
+
 .globl main
 main: 
     sub     $40, %rsp
     
-    movw    $6535, 2(%rsp)
-    movl    $23, 6(%rsp)
-    movq    $23234234, 14(%rsp)
+    mov     myShortik(%rip), %ax
+    mov     %ax, 2(%rsp)
+    mov     myLongik(%rip), %eax
+    mov     %eax, 6(%rsp)
+    mov     myQuad(%rip), %rax
+    mov     %rax, 14(%rsp)
+   
    
     movss   myFlotik(%rip), %xmm0
     movss   %xmm0, 22(%rsp)
-    movss   myDoublik(%rip), %xmm1
-    movss   %xmm1, 32(%rsp)
+    movsd   myDoublik(%rip), %xmm1
+    movsd   %xmm1, 32(%rsp)
     
     
     lea     format_int16(%rip), %rdi
@@ -48,7 +56,7 @@ main:
    
     
     lea     format_float64(%rip), %rdi 
-    cvtss2sd    32(%rsp), %xmm0
+    movsd  32(%rsp), %xmm0
     mov     $1,%al 
     call    printf
     
@@ -56,5 +64,3 @@ main:
     add     $40, %rsp
     xor     %eax, %eax
     ret
-
-
