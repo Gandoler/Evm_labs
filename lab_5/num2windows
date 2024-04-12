@@ -47,28 +47,27 @@ main:
     
     
     movsd   myFlotik(%rip), %xmm0
-    cvtss2d %xmm0,%xmm0
+    cvtss2sd %xmm0,%xmm0
     movsd   %xmm0, (%rsp)
     
     movsd   myDoublik(%rip), %xmm1
+    cvtss2sd %xmm1,%xmm1
     movsd   %xmm1, 40(%rsp)
    
     
     
     lea     format_float32(%rip), %rcx 
     xor     %rdx,%rdx
-    movl     (%rsp), %edx
+    mov     (%rsp), %rdx
     
-    
-    shl $32, %rdx    
+      
       
     call    printf
    
     
     lea     format_float64(%rip), %rcx 
     xor     %rdx,%rdx
-    cvtss2sd    40(%rsp), %xmm1
-    mov     40(%rsp), %rdx
+    mov    40(%rsp), %rdx
     call    printf
     
     
