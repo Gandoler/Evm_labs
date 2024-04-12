@@ -3,12 +3,12 @@ format_int16: .string "16-bit integer: %d\n"
 format_int32: .string "32-bit integer: %d\n"
 format_int64: .string "64-bit integer: %lld\n"
 format_float32: .string "32-bit float: %f\n"
-format_float64: .string "64-bit float: %f\n"
+format_float64: .string "64-bit float: %lf\n"
 
 
 .text
 myFlotik:  .float 3.14
-myDoublik: .float 3.14159265359
+myDoublik: .double 3.14159265359
 .globl main
 main:
     movq %rsp, %rbp #for correct debugging 
@@ -47,11 +47,10 @@ main:
     
     
     movsd   myFlotik(%rip), %xmm0
-    cvtss2sd %xmm0,%xmm0
+    cvtss2sd  %xmm0, %xmm0
     movsd   %xmm0, (%rsp)
-    
+  
     movsd   myDoublik(%rip), %xmm1
-    cvtss2sd %xmm1,%xmm1
     movsd   %xmm1, 40(%rsp)
    
     
