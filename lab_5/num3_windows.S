@@ -8,41 +8,35 @@ S3:    .string "Value of z: %lf\n"
 .text
 .globl main
 main: 
-    sub    $40, %rsp  
+    sub    $32, %rsp  
     
-    
-    lea    S0(%rip), %rcx    
-    xor    %al, %al        
-    call   printf            
-     
-    
-    lea    S1(%rip), %rcx
-    lea    8(%rsp), %rdx
-    xor    %al, %al
+
+    lea    S0(%rip), %rcx          
+    call   printf            ;32
+   
+      
+   
+    lea    S1(%rip), %rcx   
+    lea    32(%rsp), %rdx
     call    scanf            
    
     
-    lea    S2(%rip), %rcx    
-    xor    %al, %al        
+    lea    S2(%rip), %rcx           
     call   printf          
     
     
     lea    S12(%rip), %rcx
     lea    16(%rsp), %rdx
-    xor    %al, %al
     call   scanf   
     
     
-    movsd   8(%rsp), %xmm0
-    movsd   16(%rsp), %xmm1
-    mov     $2, %al 
-    call    pow
+  ;  movsd   8(%rsp), %xmm0
+;    movsd   16(%rsp), %xmm1
+;    call    pow
+;    
     
     
-    
-    lea    S3(%rip), %rcx    
-    
-    xor    $1, %eax        
+    lea    S3(%rip), %rcx           
     call   printf            
     
     
