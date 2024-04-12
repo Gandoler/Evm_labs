@@ -4,22 +4,25 @@ format_int32: .string "32-bit integer: %d\n"
 format_int64: .string "64-bit integer: %lld\n"
 format_float32: .string "32-bit float: %f\n"
 format_float64: .string "64-bit float: %lf\n"
-
+myShortik:  .short 1235
+myLongik:   .long 134656
+myQuad:     .quad 1241246
+myFlotik:   .float 3.14
+myDoublik:  .double 3.14159265359
 
 .text
-myFlotik:  .float 3.14
-myDoublik: .double 3.14159265359
+
 .globl main
 main:
     movq %rsp, %rbp #for correct debugging 
-    
-   
     sub     $110, %rsp
-    
-    movw    $6535, (%rsp)
-    movl    $23, 34(%rsp)
-    movq    $23234234, 70(%rsp)
-   
+  
+    mov     myShortik(%rip), %ax
+    mov     %ax, (%rsp)
+    mov     myLongik(%rip), %eax
+    mov     %eax, 34(%rsp)
+    mov     myQuad(%rip), %rax
+    mov     %rax, 70(%rsp)
    
     
     lea     format_int16(%rip), %rcx
@@ -32,7 +35,7 @@ main:
     
     lea     format_int32(%rip), %rcx
     xor     %rdx,%rdx
-    mov    34(%rsp), %rdx
+    mov     34(%rsp), %rdx
     call    printf
     
     
