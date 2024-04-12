@@ -1,10 +1,11 @@
 .data
-S0:    .string "Enter the value of x: \n"
-S1:    .string "%lf"
+S0:     .string "Enter the value of x: \n"
+S1:     .string "%lf"
 S12:    .string "%lf"
-S2:    .string "Enter the value of y: \n"
-S3:    .string "Value of z: %lf\n"
-
+S2:     .string "Enter the value of y: \n"
+S3:     .string "Value of z: %lf\n"
+my_num_1:   .double 0
+my_num_2:   .double 0
 .text
 .globl main
 main: 
@@ -17,7 +18,7 @@ main:
      
     
     lea    S1(%rip), %rdi
-    lea    8(%rsp), %rsi
+    lea    my_num_1(%rip), %rsi
     xor    %al, %al
     call    scanf            
    
@@ -28,14 +29,14 @@ main:
     
     
     lea    S12(%rip), %rdi
-    lea    16(%rsp), %rsi
+    lea    my_num_2(%rip), %rsi
     xor    %al, %al
     call   scanf   
     
     
-    movsd   8(%rsp), %xmm0
-    movsd   16(%rsp), %xmm1
-    mov     $2, %al 
+    movsd   my_num_1(%rip), %xmm0
+    movsd   my_num_2(%rip), %xmm1
+    mov     $1, %al 
     call    pow
     
     
