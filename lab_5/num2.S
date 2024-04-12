@@ -56,7 +56,7 @@ main:
    
     
     lea     format_float64(%rip), %rdi 
-    movsd  32(%rsp), %xmm0
+    movsd   32(%rsp), %xmm0
     mov     $1,%al 
     call    printf
     
