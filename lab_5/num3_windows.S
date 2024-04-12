@@ -11,24 +11,24 @@ main:
     sub    $40, %rsp  
     
     
-    lea    S0(%rip), %rdi    
+    lea    S0(%rip), %rcx    
     xor    %al, %al        
     call   printf            
      
     
-    lea    S1(%rip), %rdi
-    lea    8(%rsp), %rsi
+    lea    S1(%rip), %rcx
+    lea    8(%rsp), %rdx
     xor    %al, %al
     call    scanf            
    
     
-    lea    S2(%rip), %rdi    
+    lea    S2(%rip), %rcx    
     xor    %al, %al        
     call   printf          
     
     
-    lea    S12(%rip), %rdi
-    lea    16(%rsp), %rsi
+    lea    S12(%rip), %rcx
+    lea    16(%rsp), %rdx
     xor    %al, %al
     call   scanf   
     
@@ -40,7 +40,7 @@ main:
     
     
     
-    lea    S3(%rip), %rdi    
+    lea    S3(%rip), %rcx    
     
     xor    $1, %eax        
     call   printf            
