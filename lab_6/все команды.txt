@@ -1,0 +1,18 @@
+cd desktop
+C:\Users\glkru\Desktop\w64devkit\bin\x86_64-w64-mingw32-g++.exe
+C:\MinGW\bin\g++.exe
+C:\MinGW\msys\1.0\bin\g++.exe
+C:\MinGW\bin\mingw32-g++.exe
+C:\Users\glkru\Desktop\SASM\Windows\MinGW64\bin\gcc.exe
+C:\Users\glkru\Desktop\mingw64\bin\g++.exe
+
+
+C:\Users\glkru\Desktop\SASM\Windows\GAS\64\as.exe
+
+
+
+
+
+C:\Users\glkru\Desktop\mingw64\bin\g++.exe -c Lab_6_1.s -o Lab_6_1.o
+C:\Users\glkru\Desktop\mingw64\bin\g++.exe -c main.cpp -o Source_6_1.o
+C:\Users\glkru\Desktop\mingw64\bin\g++.exe Lab_6_1.o Source_6_1.o -o my_program1
