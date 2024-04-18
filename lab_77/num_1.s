@@ -1,12 +1,12 @@
     .data
     S0:     .string "Enter the value of x: \n"
-    S1:     .string "%d"
-    S12:    .string "%d"
+    S1:     .string "%u"
+    S12:    .string "%u"
     S2:     .string "Enter the value of y: \n"
-    S3:     .string "Value of z: %d\n"
+    S3:     .string "Value of z: %u\n"
     S4:     .string "Value of w: %d\n"
-    x:      .long 0
-    y:      .long 0
+    x:      .long 4294967295
+    y:      .long 4294967295
     z:      .long 0 
     w:      .long 0 
     .text
@@ -37,23 +37,20 @@
         mov     x,%eax
         mov     y,%ebx
         addl     %eax, %ebx
-         js carry_set 
+        setc    %cl
         mov     %rbx, z
     
-    
-        xor %rax,%rax
-        lahf
+                                                    
+        movzbl  %cl, %ecx 
+        movl    %ecx, w   
+        
+      
+        
                
         lea     S3(%rip), %rcx   
         movl     z, %eax
         movq     %rax, %rdx
         call    printf 
-        
-                   
-                              
-                                         
-        xor     %rcx,%rcx                                                 
-        mov     %rcx, w
              
         
         lea     S4(%rip), %rcx   
@@ -64,15 +61,5 @@
         add     $40, %rsp         
         xor     %eax, %eax        
         ret 
-        
-    carry_set:             
-        mov     $1, %rdi
-        mov     %rdi,w 
-         lea     S4(%rip), %rcx   
-        movl     w, %eax
-        movq     %rax, %rdx
-        call    printf
-        add     $40, %rsp         
-        xor     %eax, %eax        
-        ret 
+
         
