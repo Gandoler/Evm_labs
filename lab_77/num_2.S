@@ -3,7 +3,7 @@ S0:     .string "Enter the value of x: \n"
 S1:     .string "%u"
 S3:     .string "Value of z: %u\n"
 x:      .long 0
-z:      .long 0 
+z:      .long 0 ;https://metanit.com/assembler/gas/9.13.php
 .text
 .globl main
 main:
