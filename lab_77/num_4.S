@@ -2,14 +2,15 @@
 S0:     .string "Enter the value of x: \n"
 S1:     .string "%lf"
 S3:     .string "Value of z: %d\n"
-x:      .double 1
+minus_one:      .long -1
 eleven:      .double 11
-z:      .long 0 
+
 .text
 .globl main
 main:
         movq %rsp, %rbp #for correct debugging 
-    sub    $40, %rsp  
+    sub    $100, %rsp 
+     
     
     
     lea     S0(%rip), %rcx           
@@ -17,26 +18,26 @@ main:
      
     
    lea    S1(%rip), %rcx
-    lea    x(%rip), %rdx
+    lea   40(%rsp), %rdx
     call    scanf              
     
     
-    movsd       x,%xmm0
-    movsd       eleven,%xmm1
+    movsd       40(%rsp),%xmm0
+    movsd      eleven(%rip),%xmm1
 
     cmpnlesd      %xmm0,%xmm1
     
     movq     %xmm1,%rax
-    mov     $-1,%rbx
+    mov    minus_one(%rip),%rbx
     imul    %rbx,%rax
-    mov     %rax,z
+    mov     %rax,44(%rsp)
  
     lea     S3(%rip), %rcx   
-    movl     z, %eax
+    movl     44(%rsp), %eax
     movq     %rax, %rdx
     call    printf 
     
-    add     $40, %rsp         
+    add     $100, %rsp         
     xor     %eax, %eax        
     ret 
 
