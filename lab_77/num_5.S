@@ -26,7 +26,7 @@ main:
     
     mov     $5,%ebx
     cmpl    %eax,%ebx
-    jae      set_minus_one
+    jg       set_minus_one
     mov     %eax,z
     back:
   
