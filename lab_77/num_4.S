@@ -2,9 +2,9 @@
 S0:     .string "Enter the value of x: \n"
 S1:     .string "%lf"
 S3:     .string "Value of z: %u\n"
-x:      .double 0
-eleven:      .long 11
-z:      .long 0 ;https://metanit.com/assembler/gas/9.13.php
+x:      .double 1
+eleven:      .double 11
+z:      .long 0 
 .text
 .globl main
 main:
@@ -16,16 +16,19 @@ main:
     call    printf            
      
     
-    lea     S1(%rip), %rcx
-    lea     x(%rip), %rdx
-    call    scanf             
+   lea    S1(%rip), %rcx
+    lea    x(%rip), %rdx
+    call    scanf              
     
     
     movsd       x,%xmm0
-    cvtsi2sd       eleven,%xmm1
+    movsd       eleven,%xmm1
 
-    cmpeqsd     %xmm0, %xmm1
-     movq %xmm1,z
+    cmpltsd     %xmm0,%xmm1
+    
+    cvtss2si     %xmm0,%rax
+    mov     %rax,z
+    
  
     lea     S3(%rip), %rcx   
     movl     z, %eax
