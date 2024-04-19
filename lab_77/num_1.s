@@ -4,16 +4,13 @@
     S12:    .string "%u"
     S2:     .string "Enter the value of y: \n"
     S3:     .string "Value of z: %u\n"
-    S4:     .string "Value of w: %d\n"
-    x:      .long 4294967295
-    y:      .long 4294967295
-    z:      .long 0 
-    w:      .long 0 
+    S4:     .string "Value of w: %d\n"  
+    
     .text
     .globl main
     main:
         movq %rsp, %rbp #for correct debugging 
-        sub    $40, %rsp  
+        sub    $100, %rsp  
         
         
         lea     S0(%rip), %rcx           
@@ -21,7 +18,7 @@
          
         
         lea     S1(%rip), %rcx
-        lea     x(%rip), %rdx
+        lea     40(%rsp), %rdx
         call    scanf            
        
         
@@ -30,35 +27,35 @@
         
         
         lea     S12(%rip), %rcx
-        lea     y(%rip), %rdx
+        lea     44(%rsp), %rdx
         call    scanf   
         
         
-        mov     x,%eax
-        mov     y,%ebx
+        mov     40(%rsp),%eax
+        mov     44(%rsp),%ebx
         addl     %eax, %ebx
         setc    %cl
-        mov     %rbx, z
+        mov     %rbx, 48(%rsp)
     
                                                     
         movzbl  %cl, %ecx 
-        movl    %ecx, w   
+        movl    %ecx, 52(%rsp)  
         
       
         
                
         lea     S3(%rip), %rcx   
-        movl     z, %eax
+        movl     48(%rsp), %eax
         movq     %rax, %rdx
         call    printf 
              
         
         lea     S4(%rip), %rcx   
-        movl     w, %eax
+        movl     52(%rsp), %eax
         movq     %rax, %rdx
         call    printf  
         
-        add     $40, %rsp         
+        add     $100, %rsp         
         xor     %eax, %eax        
         ret 
 
