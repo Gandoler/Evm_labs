@@ -24,7 +24,7 @@ main:
     lea     S0_1(%rip), %rcx           
     call    printf            
     lea    S1_2(%rip), %rcx
-    lea   44(%rsp), %rdx
+    lea   48(%rsp), %rdx
     call    scanf                       
     
     
@@ -34,7 +34,7 @@ main:
     divsd    %xmm0,%xmm1
     
     
-    movsd 44(%rsp), %xmm2
+    movsd 48(%rsp), %xmm2
     mov $2, %rbx
     cvtsi2sd %rbx,%xmm0
    divsd    %xmm0,%xmm2
@@ -42,13 +42,13 @@ main:
    addsd    %xmm2,%xmm1
    
    movsd 40(%rsp), %xmm0
-    movsd 44(%rsp), %xmm2
+    movsd 48(%rsp), %xmm2
     mulsd   %xmm0,%xmm2
     
     addsd    %xmm2,%xmm1
  
     lea     S3(%rip), %rcx   
-    movl     48(%rsp), %eax
+    movl     56(%rsp), %eax
     movq     %xmm1, %rdx
     call    printf 
     
