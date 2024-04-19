@@ -1,7 +1,7 @@
 .data
 S0:     .string "Enter the value of x: \n"
 S1:     .string "%lf"
-S3:     .string "Value of z: %u\n"
+S3:     .string "Value of z: %d\n"
 x:      .double 1
 eleven:      .double 11
 z:      .long 0 
@@ -24,11 +24,12 @@ main:
     movsd       x,%xmm0
     movsd       eleven,%xmm1
 
-    cmpltsd     %xmm0,%xmm1
+    cmpnlesd      %xmm0,%xmm1
     
-    cvtss2si     %xmm0,%rax
+    movq     %xmm1,%rax
+    mov     $-1,%rbx
+    imul    %rbx,%rax
     mov     %rax,z
-    
  
     lea     S3(%rip), %rcx   
     movl     z, %eax
